@@ -317,5 +317,11 @@ void WelsInitReconstructionFuncs (SWelsFuncPtrList* pFuncList, uint32_t  uiCpuFl
     pFuncList->pfIDctFourT4     = WelsIDctFourT4Rec_lasx;
   }
 #endif
+
+#if defined(HAVE_MSA)
+  if (uiCpuFlag & WELS_CPU_MSA) {
+    pFuncList->pfIDctFourT4     = WelsIDctFourT4Rec_msa;
+  }
+#endif
 }
 }

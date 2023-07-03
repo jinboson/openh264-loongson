@@ -95,6 +95,12 @@ class CSceneChangeDetectorVideo {
     }
 #endif
 
+#ifdef HAVE_MSA
+    if (iCpuFlag & WELS_CPU_MSA) {
+      m_pfSad = WelsSampleSad8x8_msa;
+    }
+#endif
+
 #ifdef HAVE_LASX
     if (iCpuFlag & WELS_CPU_LASX) {
       m_pfSad = WelsSampleSad8x8_lasx;

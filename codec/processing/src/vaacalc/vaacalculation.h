@@ -142,6 +142,12 @@ VAACalcSadSsdFunc       VAACalcSadSsd_mmi;
 WELSVP_EXTERN_C_END
 #endif
 
+#ifdef HAVE_MSA
+WELSVP_EXTERN_C_BEGIN
+VAACalcSadBgdFunc       VAACalcSadBgd_msa;
+WELSVP_EXTERN_C_END
+#endif
+
 #ifdef HAVE_LSX
 WELSVP_EXTERN_C_BEGIN
 VAACalcSadBgdFunc       VAACalcSadBgd_lsx;

@@ -357,6 +357,49 @@ void McHorVer20Width17U8ToS16_avx2 (const uint8_t* pSrc, int32_t iSrcStride, int
 #endif //X86_ASM
 
 //***************************************************************************//
+//                       msa definition                                      //
+//***************************************************************************//
+#if defined(HAVE_MSA)
+void McCopyWidthEq4_msa (const uint8_t* pSrc, int32_t iSrcStride, uint8_t* pDst, int32_t iDstStride, int32_t iHeight);
+void McCopyWidthEq8_msa (const uint8_t* pSrc, int32_t iSrcStride, uint8_t* pDst, int32_t iDstStride, int32_t iHeight);
+void McCopyWidthEq16_msa (const uint8_t* pSrc, int32_t iSrcStride, uint8_t* pDst, int32_t iDstStride, int32_t iHeight);
+void McChromaWidthEq4_msa (const uint8_t *pSrc, int32_t iSrcStride, uint8_t *pDst, int32_t iDstStride,
+                           const uint8_t *pABCD, int32_t iHeight);
+void McChromaWidthEq8_msa (const uint8_t *pSrc, int32_t iSrcStride, uint8_t *pDst, int32_t iDstStride,
+                           const uint8_t *pABCD, int32_t iHeight);
+void PixelAvgWidthEq4_msa (uint8_t* pDst, int32_t iDstStride, const uint8_t* pSrcA, int32_t iSrcAStride,
+                           const uint8_t* pSrcB, int32_t iSrcBStride, int32_t iHeight);
+void PixelAvgWidthEq8_msa (uint8_t* pDst, int32_t iDstStride, const uint8_t* pSrcA, int32_t iSrcAStride,
+                           const uint8_t* pSrcB, int32_t iSrcBStride, int32_t iHeight);
+void PixelAvgWidthEq16_msa (uint8_t* pDst, int32_t iDstStride, const uint8_t* pSrcA, int32_t iSrcAStride,
+                           const uint8_t* pSrcB, int32_t iSrcBStride, int32_t iHeight);
+void McHorVer02WidthEq8_msa (const uint8_t* pSrc, int32_t iSrcStride, uint8_t* pDst, int32_t iDstStride,
+                             int32_t iHeight);
+void McHorVer02WidthEq16_msa (const uint8_t* pSrc, int32_t iSrcStride, uint8_t* pDst, int32_t iDstStride,
+                              int32_t iHeight);
+void McHorVer20WidthEq4_msa (const uint8_t* pSrc, int32_t iSrcStride, uint8_t* pDst, int32_t iDstStride,
+                             int32_t iHeight);
+void McHorVer20WidthEq5_msa (const uint8_t *pSrc, int32_t iSrcStride, uint8_t *pDst, int32_t iDstStride,
+                             int32_t iHeight);
+void McHorVer20WidthEq8_msa (const uint8_t* pSrc, int32_t iSrcStride, uint8_t* pDst, int32_t iDstStride,
+                             int32_t iHeight);
+void McHorVer20WidthEq9_msa (const uint8_t *pSrc, int32_t iSrcStride, uint8_t *pDst, int32_t iDstStride,
+                             int32_t iHeight);
+void McHorVer20WidthEq17_msa (const uint8_t *pSrc, int32_t iSrcStride, uint8_t *pDst, int32_t iDstStride,
+                              int iHeight);
+void McHorVer20WidthEq16_msa (const uint8_t* pSrc, int32_t iSrcStride, uint8_t* pDst, int32_t iDstStride,
+                              int32_t iHeight);
+void McHorVer22WidthEq5_msa(const uint8_t *pSrc, int32_t iSrcStride, uint8_t *pDst, int32_t iDstStride,
+                            int32_t iHeight);
+void McHorVer22WidthEq8_msa (const uint8_t* pSrc, int32_t iSrcStride, uint8_t* pDst, int32_t iDstStride,
+                             int32_t iHeight);
+void McHorVer22WidthEq9_msa (const uint8_t* pSrc, int32_t iSrcStride, uint8_t* pDst, int32_t iDstStride,
+                             int32_t iHeight);
+void McHorVer22WidthEq17_msa (const uint8_t* pSrc, int32_t iSrcStride, uint8_t* pDst, int32_t iDstStride,
+                             int32_t iHeight);
+#endif
+
+//***************************************************************************//
 //                       LSX definition                                      //
 //***************************************************************************//
 #if defined(HAVE_LSX)

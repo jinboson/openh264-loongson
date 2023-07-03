@@ -78,6 +78,10 @@ COMMON_OBJSMIPS_MMI += $(COMMON_ASM_MIPS_MMI_SRCS:.c=.$(OBJ))
 COMMON_ASM_MIPS_MSA_SRCS=\
 	$(COMMON_SRCDIR)/mips/copy_mb_msa.c\
 	$(COMMON_SRCDIR)/mips/deblock_msa.c\
+	$(COMMON_SRCDIR)/mips/satd_sad_msa.c\
+	$(COMMON_SRCDIR)/mips/mc_chroma_msa.c\
+	$(COMMON_SRCDIR)/mips/mc_horver_msa.c\
+	$(COMMON_SRCDIR)/mips/intra_pred_com_msa.c\
 
 COMMON_OBJSMIPS_MSA += $(COMMON_ASM_MIPS_MSA_SRCS:.c=.$(OBJ))
 ifeq ($(ASM_ARCH), mips)

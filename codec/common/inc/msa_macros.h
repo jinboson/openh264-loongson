@@ -1526,7 +1526,7 @@
 }
 
 #define MSA_CLIP_SW8_0_255(in0, in1, in2, in3,  \
-                       in4, in5, in6, in7)      \
+                           in4, in5, in6, in7)  \
 {                                               \
     MSA_CLIP_SW4_0_255(in0, in1, in2, in3);     \
     MSA_CLIP_SW4_0_255(in4, in5, in6, in7);     \
@@ -2129,7 +2129,7 @@
  */
 #define MSA_SRARI_H(RTYPE, in, shift)                       \
 {                                                           \
-    in = (RTYPE) __msa_srari_h((v8i16) in, (v8i16) shift);  \
+    in = (RTYPE) __msa_srari_h((v8i16) in, shift);          \
 }
 
 #define MSA_SRARI_H2(RTYPE, in0, in1, shift)  \
@@ -2155,7 +2155,7 @@
  */
 #define MSA_SRARI_W(RTYPE, in, shift)                       \
 {                                                           \
-    in = (RTYPE) __msa_srari_w((v4i32) in, (v4i32) shift);  \
+    in = (RTYPE) __msa_srari_w((v4i32) in, shift);          \
 }
 
 #define MSA_SRARI_W2(RTYPE, in0, in1, shift)  \

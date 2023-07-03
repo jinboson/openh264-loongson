@@ -188,6 +188,21 @@ void WelsDctT4_lasx (int16_t* pDct,  uint8_t* pPixel1, int32_t iStride1, uint8_t
 void WelsDctFourT4_lasx (int16_t* pDct, uint8_t* pPixel1, int32_t iStride1, uint8_t* pPixel2, int32_t iStride2);
 #endif
 
+#ifdef HAVE_MSA
+/****************************************************************************
+ *  * Scan and Score functions
+ *   ****************************************************************************/
+void WelsScan4x4Ac_msa (int16_t* zig_value, int16_t* pDct);
+void WelsScan4x4DcAc_msa (int16_t* pLevel, int16_t* pDct);
+
+void WelsDctT4_msa (int16_t* pDct,  uint8_t* pPixel1, int32_t iStride1, uint8_t* pPixel2, int32_t iStride2);
+void WelsDctFourT4_msa (int16_t* pDct, uint8_t* pPixel1, int32_t iStride1, uint8_t* pPixel2, int32_t iStride2);
+void WelsQuant4x4_msa (int16_t* pDct, const int16_t* pFF, const int16_t* pMF);
+void WelsQuant4x4Dc_msa (int16_t* pDct, int16_t iFF, int16_t iMF);
+void WelsQuantFour4x4_msa (int16_t* pDct, const int16_t* pFF, const int16_t* pMF);
+void WelsQuantFour4x4Max_msa (int16_t* pDct, const int16_t* pFF, const int16_t* pMF, int16_t* pMax);
+#endif
+
 #if defined(__cplusplus)
 }
 #endif//__cplusplus

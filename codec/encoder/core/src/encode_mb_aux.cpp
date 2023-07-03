@@ -615,12 +615,23 @@ void WelsInitEncodingFuncs (SWelsFuncPtrList* pFuncList, uint32_t  uiCpuFlag) {
 
 #if defined(HAVE_MSA)
   if (uiCpuFlag & WELS_CPU_MSA) {
+    pFuncList->pfQuantization4x4        = WelsQuant4x4_msa;
+    pFuncList->pfQuantizationDc4x4      = WelsQuant4x4Dc_msa;
+    pFuncList->pfQuantizationFour4x4    = WelsQuantFour4x4_msa;
+    pFuncList->pfQuantizationFour4x4Max = WelsQuantFour4x4Max_msa;
+
     pFuncList->pfCopy8x8Aligned         = WelsCopy8x8_msa;
     pFuncList->pfCopy8x16Aligned        = WelsCopy8x16_msa;
 
     pFuncList->pfCopy16x16Aligned       =
     pFuncList->pfCopy16x16NotAligned    = WelsCopy16x16_msa;
     pFuncList->pfCopy16x8NotAligned     = WelsCopy16x8_msa;
+
+    pFuncList->pfScan4x4                = WelsScan4x4DcAc_msa;
+    pFuncList->pfScan4x4Ac              = WelsScan4x4Ac_msa;
+
+    pFuncList->pfDctT4                  = WelsDctT4_msa;
+    pFuncList->pfDctFourT4              = WelsDctFourT4_msa;
   }
 #endif
 

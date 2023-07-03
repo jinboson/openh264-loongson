@@ -174,6 +174,14 @@ void WelsIChromaPredH_lasx (uint8_t* pPred, uint8_t* pRef, const int32_t kiStrid
 void WelsIChromaPredDc_lasx (uint8_t* pPred, uint8_t* pRef, const int32_t kiStride);
 #endif//HAVE_LASX
 
+#if defined(HAVE_MSA)
+void WelsIChromaPredPlane_msa (uint8_t* pPred, uint8_t* pRef, const int32_t kiStride);
+void WelsI16x16LumaPredDc_msa (uint8_t* pPred, uint8_t* pRef, const int32_t kiStride);
+void WelsI16x16LumaPredPlane_msa (uint8_t* pPred, uint8_t* pRef, const int32_t kiStride);
+void WelsIChromaPredH_msa (uint8_t* pPred, uint8_t* pRef, const int32_t kiStride);
+void WelsIChromaPredV_msa (uint8_t* pPred, uint8_t* pRef, const int32_t kiStride);
+void WelsIChromaPredDc_msa (uint8_t* pPred, uint8_t* pRef, const int32_t kiStride);
+#endif
 #if defined(__cplusplus)
 }
 #endif//__cplusplus

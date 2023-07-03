@@ -105,6 +105,10 @@ void WelsIDctRecI16x16Dc_mmi (uint8_t* pRec, int32_t iStride, uint8_t* pPredicti
 void WelsIDctT4Rec_lasx (uint8_t* pRec, int32_t iStride, uint8_t* pPrediction, int32_t iPredStride, int16_t* pDct);
 void WelsIDctFourT4Rec_lasx (uint8_t* pRec, int32_t iStride, uint8_t* pPrediction, int32_t iPredStride, int16_t* pDct);
 #endif
+
+#if defined(HAVE_MSA)
+void WelsIDctFourT4Rec_msa (uint8_t* pRec, int32_t iStride, uint8_t* pPrediction, int32_t iPredStride, int16_t* pDct);
+#endif
 #if defined(__cplusplus)
 }
 #endif//__cplusplus

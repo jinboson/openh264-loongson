@@ -104,6 +104,12 @@ void CVAACalculation::InitVaaFuncs (SVaaFuncs& sVaaFuncs, int32_t iCpuFlag) {
   }
 #endif//HAVE_MMI
 
+#ifdef HAVE_MSA
+  if ((iCpuFlag & WELS_CPU_MSA) == WELS_CPU_MSA) {
+    sVaaFuncs.pfVAACalcSadBgd    = VAACalcSadBgd_msa;
+  }
+#endif//HAVE_MSA
+
 #ifdef HAVE_LSX
   if ((iCpuFlag & WELS_CPU_LSX) == WELS_CPU_LSX) {
     sVaaFuncs.pfVAACalcSad       = VAACalcSad_lsx;

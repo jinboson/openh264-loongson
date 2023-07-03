@@ -107,6 +107,40 @@ TEST (EncodeMbAuxTest, WelsScan4x4DcAc_mmi) {
   FREE_MEMORY (iDct);
 }
 #endif
+#ifdef HAVE_MSA
+TEST (EncodeMbAuxTest, WelsScan4x4Ac_msa) {
+  CMemoryAlign cMemoryAlign (0);
+  ALLOC_MEMORY (int16_t, iLevelA, 16);
+  ALLOC_MEMORY (int16_t, iLevelB, 16);
+  ALLOC_MEMORY (int16_t, iDct, 16);
+  for (int i = 0; i < 16; i++) {
+    iDct[i] = rand() % 256 + 1;
+  }
+  WelsScan4x4Ac_c (iLevelA, iDct);
+  WelsScan4x4Ac_msa (iLevelB, iDct);
+  for (int j = 0; j < 16; j++)
+    EXPECT_EQ (iLevelA[j], iLevelB[j]);
+  FREE_MEMORY (iLevelA);
+  FREE_MEMORY (iLevelB);
+  FREE_MEMORY (iDct);
+}
+TEST (EncodeMbAuxTest, WelsScan4x4DcAc_msa) {
+  CMemoryAlign cMemoryAlign (0);
+  ALLOC_MEMORY (int16_t, iLevelA, 32);
+  ALLOC_MEMORY (int16_t, iLevelB, 32);
+  ALLOC_MEMORY (int16_t, iDct, 32);
+  for (int i = 0; i < 32; i++)
+    iDct[i] = (rand() & 32767) - 16384;
+  WelsScan4x4DcAc_msa (iLevelA, iDct);
+  WelsScan4x4DcAc_c (iLevelB, iDct);
+  for (int i = 0; i < 16; i++)
+    EXPECT_EQ (iLevelA[i], iLevelB[i]);
+  FREE_MEMORY (iLevelA);
+  FREE_MEMORY (iLevelB);
+  FREE_MEMORY (iDct);
+}
+#endif
+
 TEST (EncodeMbAuxTest, TestScan_4x4_dcc) {
   CMemoryAlign cMemoryAlign (0);
   ALLOC_MEMORY (int16_t, iLevel, 16);
@@ -300,6 +334,17 @@ TEST (EncodeMbAuxTest, WelsDctT4_lasx) {
 TEST (EncodeMbAuxTest, WelsDctFourT4_lasx) {
   TestDctFourT4 (WelsDctFourT4_lasx);
 }
+#endif
+
+#ifdef HAVE_MSA
+TEST (EncodeMbAuxTest, WelsDctT4_msa) {
+  TestDctT4 (WelsDctT4_msa);
+}
+
+TEST (EncodeMbAuxTest, WelsDctFourT4_msa) {
+  TestDctFourT4 (WelsDctFourT4_msa);
+}
+
 #endif
 
 void copy (uint8_t* pDst, int32_t iDStride, uint8_t* pSrc, int32_t iSStride, int32_t iWidth, int32_t iHeight) {
@@ -589,6 +634,25 @@ TEST (EncodeMbAuxTest, WelsQuantFour4x4Max_lsx) {
     TestWelsQuantFour4x4Max (WelsQuantFour4x4Max_lsx);
 }
 #endif //HAVE_LSX
+
+#ifdef HAVE_MSA
+TEST (EncodeMbAuxTest, WelsQuant4x4_msa) {
+  if (WelsCPUFeatureDetect (0) & WELS_CPU_MSA)
+    TestWelsQuant4x4 (WelsQuant4x4_msa);
+}
+TEST (EncodeMbAuxTest, WelsQuant4x4Dc_msa) {
+  if (WelsCPUFeatureDetect (0) & WELS_CPU_MSA)
+    TestWelsQuant4x4Dc (WelsQuant4x4Dc_msa);
+}
+TEST (EncodeMbAuxTest, WelsQuantFour4x4_msa) {
+  if (WelsCPUFeatureDetect (0) & WELS_CPU_MSA)
+    TestWelsQuantFour4x4 (WelsQuantFour4x4_msa);
+}
+TEST (EncodeMbAuxTest, WelsQuantFour4x4Max_msa) {
+  if (WelsCPUFeatureDetect (0) & WELS_CPU_MSA)
+    TestWelsQuantFour4x4Max (WelsQuantFour4x4Max_msa);
+}
+#endif
 
 int32_t WelsHadamardQuant2x2SkipAnchor (int16_t* rs, int16_t ff,  int16_t mf) {
   int16_t pDct[4], s[4];

@@ -251,6 +251,11 @@ TEST (DecodeMbAuxTest, WelsIDctT4Rec_mmi) {
   TestIDctT4Rec<int16_t> (WelsIDctT4Rec_mmi);
 }
 #endif
+#if defined(HAVE_MSA)
+TEST (DecodeMbAuxTest, WelsIDctFourT4Rec_msa) {
+  TestIDctFourT4Rec<int16_t> (WelsIDctFourT4Rec_msa);
+}
+#endif
 #if defined(HAVE_LASX)
 TEST (DecodeMbAuxTest, WelsIDctT4Rec_lasx) {
   TestIDctT4Rec<int16_t> (WelsIDctT4Rec_lasx);

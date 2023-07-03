@@ -133,6 +133,14 @@ int32_t WelsSampleSatd16x16_mmi (uint8_t*, int32_t, uint8_t*, int32_t);
 int32_t WelsSampleSatd4x4_mmi (uint8_t*, int32_t, uint8_t*, int32_t);
 #endif//HAVE_MMI
 
+#if defined (HAVE_MSA)
+int32_t WelsSampleSatd8x8_msa (uint8_t*, int32_t, uint8_t*, int32_t);
+int32_t WelsSampleSatd16x8_msa (uint8_t*, int32_t, uint8_t*, int32_t);
+int32_t WelsSampleSatd8x16_msa (uint8_t*, int32_t, uint8_t*, int32_t);
+int32_t WelsSampleSatd16x16_msa (uint8_t*, int32_t, uint8_t*, int32_t);
+int32_t WelsSampleSatd4x4_msa (uint8_t*, int32_t, uint8_t*, int32_t);
+#endif
+
 #if defined (HAVE_LASX)
 int32_t WelsSampleSatd4x4_lasx (uint8_t*, int32_t, uint8_t*, int32_t);
 int32_t WelsSampleSatd8x8_lasx (uint8_t*, int32_t, uint8_t*, int32_t);
