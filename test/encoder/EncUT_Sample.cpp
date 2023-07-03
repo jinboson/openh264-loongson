@@ -690,6 +690,20 @@ GENERATE_Sad16x8_UT (WelsSampleSatd16x8_mmi, WelsSampleSatd16x8_c, WELS_CPU_MMI)
 GENERATE_Sad16x16_UT (WelsSampleSatd16x16_mmi, WelsSampleSatd16x16_c, WELS_CPU_MMI)
 #endif
 
+#ifdef HAVE_MSA
+GENERATE_Sad4x4_UT (WelsSampleSad4x4_msa, WelsSampleSad4x4_c, WELS_CPU_MSA)
+GENERATE_Sad8x8_UT (WelsSampleSad8x8_msa, WelsSampleSad8x8_c, WELS_CPU_MSA)
+GENERATE_Sad8x16_UT (WelsSampleSad8x16_msa, WelsSampleSad8x16_c, WELS_CPU_MSA)
+GENERATE_Sad16x8_UT (WelsSampleSad16x8_msa, WelsSampleSad16x8_c, WELS_CPU_MSA)
+GENERATE_Sad16x16_UT (WelsSampleSad16x16_msa, WelsSampleSad16x16_c, WELS_CPU_MSA)
+
+GENERATE_Sad4x4_UT (WelsSampleSatd4x4_msa, WelsSampleSatd4x4_c, WELS_CPU_MSA)
+GENERATE_Sad8x8_UT (WelsSampleSatd8x8_msa, WelsSampleSatd8x8_c, WELS_CPU_MSA)
+GENERATE_Sad8x16_UT (WelsSampleSatd8x16_msa, WelsSampleSatd8x16_c, WELS_CPU_MSA)
+GENERATE_Sad16x8_UT (WelsSampleSatd16x8_msa, WelsSampleSatd16x8_c, WELS_CPU_MSA)
+GENERATE_Sad16x16_UT (WelsSampleSatd16x16_msa, WelsSampleSatd16x16_c, WELS_CPU_MSA)
+#endif
+
 #ifdef HAVE_LASX
 GENERATE_Sad4x4_UT (WelsSampleSad4x4_lasx, WelsSampleSad4x4_c, WELS_CPU_LASX)
 GENERATE_Sad8x8_UT (WelsSampleSad8x8_lasx, WelsSampleSad8x8_c, WELS_CPU_LASX)
@@ -758,6 +772,14 @@ GENERATE_SadFour_UT (WelsSampleSadFour8x8_mmi, WELS_CPU_MMI, 8, 8)
 GENERATE_SadFour_UT (WelsSampleSadFour8x16_mmi, WELS_CPU_MMI, 8, 16)
 GENERATE_SadFour_UT (WelsSampleSadFour16x8_mmi, WELS_CPU_MMI, 16, 8)
 GENERATE_SadFour_UT (WelsSampleSadFour16x16_mmi, WELS_CPU_MMI, 16, 16)
+#endif
+
+#ifdef HAVE_MSA
+GENERATE_SadFour_UT (WelsSampleSadFour4x4_msa, WELS_CPU_MSA, 4, 4)
+GENERATE_SadFour_UT (WelsSampleSadFour8x8_msa, WELS_CPU_MSA, 8, 8)
+GENERATE_SadFour_UT (WelsSampleSadFour8x16_msa, WELS_CPU_MSA, 8, 16)
+GENERATE_SadFour_UT (WelsSampleSadFour16x8_msa, WELS_CPU_MSA, 16, 8)
+GENERATE_SadFour_UT (WelsSampleSadFour16x16_msa, WELS_CPU_MSA, 16, 16)
 #endif
 
 #ifdef HAVE_LASX

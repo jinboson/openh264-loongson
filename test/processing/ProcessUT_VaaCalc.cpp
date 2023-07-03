@@ -872,6 +872,10 @@ GENERATE_VAACalcSadSsd_UT (VAACalcSadSsd_mmi, 1, WELS_CPU_MMI)
 GENERATE_VAACalcSadVar_UT (VAACalcSadVar_mmi, 1, WELS_CPU_MMI)
 #endif
 
+#if defined(HAVE_MSA)
+GENERATE_VAACalcSadBgd_UT (VAACalcSadBgd_msa, 1, WELS_CPU_MSA)
+#endif
+
 #if defined(HAVE_LSX)
 GENERATE_VAACalcSad_UT (VAACalcSad_lsx, 1, WELS_CPU_LSX)
 GENERATE_VAACalcSadBgd_UT (VAACalcSadBgd_lsx, 1, WELS_CPU_LSX)

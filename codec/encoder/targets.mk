@@ -90,6 +90,10 @@ ENCODER_ASM_MIPS_MMI_SRCS=\
 ENCODER_OBJSMIPS_MMI += $(ENCODER_ASM_MIPS_MMI_SRCS:.c=.$(OBJ))
 
 ENCODER_ASM_MIPS_MSA_SRCS=\
+	$(ENCODER_SRCDIR)/core/mips/dct_msa.c\
+	$(ENCODER_SRCDIR)/core/mips/quant_msa.c\
+	$(ENCODER_SRCDIR)/core/mips/intra_pred_msa.c\
+	$(ENCODER_SRCDIR)/core/mips/score_msa.c\
 
 ENCODER_OBJSMIPS_MSA += $(ENCODER_ASM_MIPS_MSA_SRCS:.c=.$(OBJ))
 ifeq ($(ASM_ARCH), mips)
@@ -100,8 +104,6 @@ ifeq ($(ENABLE_MSA), Yes)
 ENCODER_OBJS += $(ENCODER_OBJSMIPS_MSA)
 endif
 endif
-OBJS += $(ENCODER_OBJSMIPS_MMI)
-OBJS += $(ENCODER_OBJSMIPS_MSA)
 
 ENCODER_ASM_LOONGARCH_LSX_SRCS=\
 	$(ENCODER_SRCDIR)/core/loongarch/quant_lsx.c\

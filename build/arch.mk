@@ -48,7 +48,7 @@ endif
 ifeq ($(ENABLE_MSA), Yes)
 ENABLE_MSA = $(shell $(SRC_PATH)build/mips-simd-check.sh $(CC) msa)
 ifeq ($(ENABLE_MSA), Yes)
-CFLAGS += -DHAVE_MSA -mmsa
+CFLAGS += -DHAVE_MSA -mmsa -flax-vector-conversions
 endif
 endif
 endif
